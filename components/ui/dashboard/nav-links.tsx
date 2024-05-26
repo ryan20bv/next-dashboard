@@ -14,7 +14,7 @@ const links = [
   { name: 'Home', href: '/dashboard', icon: HomeIcon },
   {
     name: 'Invoices',
-    href: '/dashboard/invoices',
+    href: '/dashboard/invoices?page=1',
     icon: DocumentDuplicateIcon,
   },
   { name: 'Customers', href: '/dashboard/customers', icon: UserGroupIcon },
