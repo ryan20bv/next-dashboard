@@ -50,7 +50,11 @@ export default async function InvoicesTable({
                   <div className="flex justify-end gap-2">
                     {/* <UpdateInvoice id={invoice.id} />
                     <DeleteInvoice id={invoice.id} /> */}
-                    <ButtonActions id={invoice.id} />
+                    <ButtonActions
+                      id={invoice.id}
+                      name={invoice.name}
+                      amount={formatCurrency(invoice.amount)}
+                    />
                   </div>
                 </div>
               </div>

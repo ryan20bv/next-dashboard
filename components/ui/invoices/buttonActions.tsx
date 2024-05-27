@@ -12,7 +12,7 @@ export default function ButtonActions({
 }: {
   id: string;
   name: string;
-  amount: number;
+  amount: string;
 }) {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
