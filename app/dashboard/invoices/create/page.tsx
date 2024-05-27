@@ -1,6 +1,7 @@
 import Form from '@/components/ui/invoices/create-form';
 import Breadcrumbs from '@/components/ui/invoices/breadcrumbs';
 import { fetchCustomers } from '@/components/lib/data';
+import { paths } from '@/components/routes/path';
 
 export default async function CreateInvoicePage() {
   const customers = await fetchCustomers();
@@ -9,10 +10,10 @@ export default async function CreateInvoicePage() {
     <main>
       <Breadcrumbs
         breadcrumbs={[
-          { label: 'Invoices', href: '/dashboard/invoices' },
+          { label: 'Invoices', href: `${paths.invoices.root}` },
           {
             label: 'Create Invoice',
-            href: '/dashboard/invoices/create',
+            href: `${paths.invoices.create}`,
             active: true,
           },
         ]}

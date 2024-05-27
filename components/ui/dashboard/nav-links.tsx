@@ -7,17 +7,18 @@ import {
   DocumentDuplicateIcon,
 } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
+import { paths } from '@/components/routes/path';
 
 // Map of links to display in the side navigation.
 // Depending on the size of the application, this would be stored in a database.
 const links = [
-  { name: 'Home', href: '/dashboard', icon: HomeIcon },
+  { name: 'Home', href: `${paths.dashboard.root}`, icon: HomeIcon },
   {
     name: 'Invoices',
-    href: '/dashboard/invoices?page=1',
+    href: `${paths.invoices.root}`,
     icon: DocumentDuplicateIcon,
   },
-  { name: 'Customers', href: '/dashboard/customers', icon: UserGroupIcon },
+  { name: 'Customers', href: `${paths.customers.root}`, icon: UserGroupIcon },
 ];
 
 export default function NavLinks() {
