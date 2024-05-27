@@ -2,6 +2,11 @@ import AcmeLogo from '@/components/ui/acme-logo';
 import LoginForm from '@/components/ui/login-form';
 import Link from 'next/link';
 import { paths } from '@/components/routes/path';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Login',
+};
 
 export default function LoginPage() {
   return (

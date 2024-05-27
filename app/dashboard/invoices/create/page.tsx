@@ -3,6 +3,12 @@ import Breadcrumbs from '@/components/ui/invoices/breadcrumbs';
 import { fetchCustomers } from '@/components/lib/data';
 import { paths } from '@/components/routes/path';
 
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Create Invoice',
+};
+
 export default async function CreateInvoicePage() {
   const customers = await fetchCustomers();
 

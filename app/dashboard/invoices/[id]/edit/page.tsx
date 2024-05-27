@@ -6,6 +6,12 @@ import { fetchInvoiceById, fetchCustomers } from '@/components/lib/data';
 
 import { paths } from '@/components/routes/path';
 
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Edit Invoice',
+};
+
 export default async function EditInvoicePage({
   params,
 }: {
