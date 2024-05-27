@@ -35,14 +35,9 @@ export function DeleteInvoice() {
   );
 }
 
-export function ConfirmDeleteInvoice({
-  id,
-  onClose,
-}: {
-  id: string;
-  onClose: () => void;
-}) {
+export function ConfirmDeleteInvoice({ id }: { id: string }) {
   const deleteInvoiceWithId = deleteInvoiceAction.bind(null, id);
+
   // onClose();
 
   return (

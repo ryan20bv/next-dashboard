@@ -1,3 +1,5 @@
+import { Suspense } from 'react';
+import { notFound } from 'next/navigation';
 import Form from '@/components/ui/invoices/edit-form';
 import Breadcrumbs from '@/components/ui/invoices/breadcrumbs';
 import { fetchInvoiceById, fetchCustomers } from '@/components/lib/data';
@@ -14,6 +16,11 @@ export default async function EditInvoicePage({
     fetchInvoiceById(id),
     fetchCustomers(),
   ]);
+
+  if (!invoice) {
+    notFound();
+  }
+
   return (
     <main>
       <Breadcrumbs
@@ -26,7 +33,9 @@ export default async function EditInvoicePage({
           },
         ]}
       />
-      <Form invoice={invoice} customers={customers} />
+      <Suspense fallback={<p>Fetching Information...</p>}>
+        <Form invoice={invoice} customers={customers} />
+      </Suspense>
     </main>
   );
 }
