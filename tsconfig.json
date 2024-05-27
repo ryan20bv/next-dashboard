@@ -30,7 +30,8 @@
     "app/lib/placeholder-data.js",
     "scripts/seed.js",
     "**/*.css",
-    "*.css"
+    "*.css",
+    "components/ui/modal.jsx"
   ],
   "exclude": ["node_modules"]
 }

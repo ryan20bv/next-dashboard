@@ -12,6 +12,7 @@ export default function RootLayout({
         className={`${inter.className} antialiased`}
         suppressHydrationWarning={true}
       >
+        <div id="modal"></div>
         {children}
       </body>
     </html>

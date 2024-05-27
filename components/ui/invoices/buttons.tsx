@@ -26,13 +26,31 @@ export function UpdateInvoice({ id }: { id: string }) {
   );
 }
 
-export function DeleteInvoice({ id }: { id: string }) {
+export function DeleteInvoice() {
+  return (
+    <button className="rounded-md border p-2 hover:bg-gray-100">
+      <span className="sr-only">Delete</span>
+      <TrashIcon className="w-5" />
+    </button>
+  );
+}
+
+export function ConfirmDeleteInvoice({
+  id,
+  onClose,
+}: {
+  id: string;
+  onClose: () => void;
+}) {
   const deleteInvoiceWithId = deleteInvoiceAction.bind(null, id);
+  // onClose();
+
   return (
     <form action={deleteInvoiceWithId}>
-      <button className="rounded-md border p-2 hover:bg-gray-100">
-        <span className="sr-only">Delete</span>
-        <TrashIcon className="w-5" />
+      <button className="ml-4 rounded-md border bg-red-500 p-2 text-white hover:bg-red-400 hover:text-black ">
+        <span>Delete</span>
+        {/* <span className="sr-only">Delete</span> */}
+        {/* <TrashIcon className="w-5" /> */}
       </button>
     </form>
   );
