@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { UpdateInvoice, DeleteInvoice } from '@/components/ui/invoices/buttons';
 import Modal from '../modal';
 import { ConfirmDeleteInvoice } from '@/components/ui/invoices/buttons';
+import { useFormStatus } from 'react-dom';
 
 export default function ButtonActions({
   id,
@@ -14,6 +15,7 @@ export default function ButtonActions({
   name: string;
   amount: string;
 }) {
+  const { pending } = useFormStatus();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isDeleting, setIsDeleting] = useState<boolean>(false);
 
@@ -41,8 +43,8 @@ export default function ButtonActions({
               Amount: <span className="font-bold">{amount}</span>
             </div>
             <div className="flex justify-end">
-              {isDeleting && <p>Deleting...</p>}
-              {!isDeleting && (
+              {pending && <p>Deleting...</p>}
+              {!pending && (
                 <>
                   <button
                     onClick={handleCloseModal}

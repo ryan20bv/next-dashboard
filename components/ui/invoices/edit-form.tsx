@@ -11,7 +11,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { paths } from '@/components/routes/path';
 import { updateInvoiceAction } from '@/components/lib/actions/updateInvoiceAction';
-import { useFormState } from 'react-dom';
+import { useFormState, useFormStatus } from 'react-dom';
 
 export default function EditInvoiceForm({
   invoice,
@@ -23,6 +23,7 @@ export default function EditInvoiceForm({
   const initialState = { message: null, errors: {} };
   const updateInvoiceWithId = updateInvoiceAction.bind(null, invoice.id);
   const [state, editDispatch] = useFormState(updateInvoiceWithId, initialState);
+  const { pending } = useFormStatus();
 
   return (
     <form action={editDispatch}>
@@ -145,13 +146,18 @@ export default function EditInvoiceForm({
         </fieldset>
       </div>
       <div className="mt-6 flex justify-end gap-4">
-        <Link
-          href={paths.invoices.root}
-          className="flex h-10 items-center rounded-lg bg-gray-100 px-4 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-200"
-        >
-          Cancel
-        </Link>
-        <Button type="submit">Edit Invoice</Button>
+        {pending && <p>Updating...</p>}
+        {!pending && (
+          <>
+            <Link
+              href={paths.invoices.root}
+              className="flex h-10 items-center rounded-lg bg-gray-100 px-4 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-200"
+            >
+              Cancel
+            </Link>
+            <Button type="submit">Edit Invoice</Button>
+          </>
+        )}
       </div>
     </form>
   );

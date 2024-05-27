@@ -11,9 +11,10 @@ import {
 import { Button } from '@/components/ui/button';
 import { createInvoiceAction } from '@/components/lib/actions/createInvoiceAction';
 import { paths } from '@/components/routes/path';
-import { useFormState } from 'react-dom';
+import { useFormState, useFormStatus } from 'react-dom';
 
 export default function Form({ customers }: { customers: CustomerField[] }) {
+  const { pending } = useFormStatus();
   const initialState = { message: null, errors: {} };
   const [state, createDispatch] = useFormState(
     createInvoiceAction,
@@ -138,13 +139,18 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
         </fieldset>
       </div>
       <div className="mt-6 flex justify-end gap-4">
-        <Link
-          href={`${paths.invoices.root}`}
-          className="flex h-10 items-center rounded-lg bg-gray-100 px-4 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-200"
-        >
-          Cancel
-        </Link>
-        <Button type="submit">Create Invoice</Button>
+        {pending && <p>Submitting...</p>}
+        {!pending && (
+          <>
+            <Link
+              href={`${paths.invoices.root}`}
+              className="flex h-10 items-center rounded-lg bg-gray-100 px-4 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-200"
+            >
+              Cancel
+            </Link>
+            <Button type="submit">Create Invoice</Button>
+          </>
+        )}
       </div>
     </form>
   );
