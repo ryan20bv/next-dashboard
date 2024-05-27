@@ -6,6 +6,11 @@ import { lusitana } from '@/components/ui/fonts';
 import { InvoicesTableSkeleton } from '@/components/ui/skeletons';
 import { Suspense } from 'react';
 import { fetchInvoicesPages } from '@/components/lib/data';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Invoices',
+};
 
 export default async function InvoicesPage({
   searchParams,
