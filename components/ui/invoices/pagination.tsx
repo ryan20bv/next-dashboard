@@ -7,21 +7,20 @@ import { generatePagination } from '@/components/lib/utils';
 import { usePathname, useSearchParams } from 'next/navigation';
 
 export default function Pagination({ totalPages }: { totalPages: number }) {
-  // const pathname = usePathname();
-
+  const pathname = usePathname();
   const searchParams = useSearchParams();
   const currentPage = Number(searchParams.get('page')) || 1;
 
   const createPageURL = (pageNumber: number | string) => {
     const params = new URLSearchParams(searchParams);
     params.set('page', pageNumber.toString());
-
-    return `/dashboard/invoices?${params.toString()}`;
+    return `${pathname}?${params.toString()}`;
   };
+
   // NOTE: comment in this code when you get to this point in the course
 
   const allPages = generatePagination(currentPage, totalPages);
-  console.log('### allPages: ', allPages);
+
   return (
     <>
       {/* NOTE: comment in this code when you get to this point in the course */}
@@ -85,7 +84,6 @@ function PaginationNumber({
       'text-gray-300': position === 'middle',
     },
   );
-
   return isActive || position === 'middle' ? (
     <div className={className}>{page}</div>
   ) : (

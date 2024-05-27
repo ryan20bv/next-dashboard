@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ESNext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -30,7 +30,7 @@
     "app/lib/placeholder-data.js",
     "scripts/seed.js",
     "**/*.css",
-    "*.css",
+    "*.css"
   ],
   "exclude": ["node_modules"]
 }
